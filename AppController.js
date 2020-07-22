@@ -12,6 +12,7 @@ export let initialState = {
   appBackground: colours.white,
   textColor: colours.black,
   alert: null,
+  isAppHome: false,
 };
 
 const useController = () => {

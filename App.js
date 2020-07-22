@@ -16,6 +16,7 @@ import useController from './AppController';
 import AuthNavigator from './src/Navigators/AuthNavigator';
 
 import 'react-native-gesture-handler';
+import AppNavigator from './src/Navigators/AppNavigator';
 
 const {Provider} = AppContext;
 
@@ -40,7 +41,7 @@ const App = () => {
         }}>
         <Animated.View style={appStyles.container}>
           <NavigationContainer>
-            <AuthNavigator />
+            {state.isAppHome ? <AppNavigator /> : <AuthNavigator />}
           </NavigationContainer>
         </Animated.View>
       </SafeAreaView>

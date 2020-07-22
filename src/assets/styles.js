@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useEffect, useState} from 'react';
-import {Animated} from 'react-native';
+import {Animated, Platform} from 'react-native';
 import {Dimensions} from 'react-native';
 import AppContext from '../../AppContext';
 import colours from './colours';
+import hexToRgb from '../utils.js/helpers';
 
 const {width, height} = Dimensions.get('window');
 
@@ -54,35 +55,9 @@ export const useStyles = () => {
     }
   }, [appBackground]);
 
-  // Stop animationn and just flip colour
-  // TODO: figure out ways to target low end phones and animate for high end phones
-  // const interpolateColour = (from, to) =>
-  //   animatedValue.interpolate({
-  //     inputRange: [0, 100],
-  //     outputRange: [from, to],
-  //   });
-
-  const interpolateColour = (from, to) => to;
-
-  let animatedWhite =
-    appTheme === 'white'
-      ? interpolateColour(colours.black, colours.white)
-      : interpolateColour(colours.white, colours.black);
-  let animatedLilac =
-    appTheme === 'white'
-      ? interpolateColour(colours.darkLilac, colours.lilac)
-      : interpolateColour(colours.lilac, colours.darkLilac);
-  let animatedBlack =
-    appTheme !== 'white'
-      ? interpolateColour(colours.black, colours.darkLilac)
-      : interpolateColour(colours.white, colours.black);
-
   const colors = {
-    white: animatedWhite,
-    black: animatedBlack,
-    whiteColor: colours.white,
-    blackColor: colours.black,
-    animatedLilac,
+    white: colours.white,
+    black: colours.black,
   };
 
   const appStyles = {
@@ -170,6 +145,96 @@ export const useStyles = () => {
     },
   };
 
+  const uiTextStyles = {
+    text: {
+      color: textColor,
+      fontSize: scale(fonts.h4.fontSize),
+      fontFamily: fonts.regularText.fontFamily,
+    },
+    textBold: {
+      fontFamily: fonts.boldText.fontFamily,
+    },
+    textSmall: {
+      fontSize: scale(fonts.h5.fontSize),
+    },
+  };
+
+  const homeScreenStyles = {
+    container: {
+      flex: 1,
+      backgroundColor: appBackground,
+    },
+    headerContainer: {
+      padding: scale(10),
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+      marginBottom: scaleVertical(5),
+    },
+    centerText: {
+      textAlign: 'center',
+    },
+    examMenu: {
+      fontFamily: fonts.boldText.fontFamily,
+    },
+    iconTextContainer: {
+      flexDirection: 'row',
+      paddingLeft: scale(10),
+    },
+    nameContainer: {
+      flex: 1,
+      paddingLeft: scale(10),
+    },
+    iconContainer: {
+      padding: scale(5),
+      height: scale(40),
+      width: scale(40),
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(255, 255, 255, 0.3)',
+      borderRadius: scale(5),
+    },
+    bodyShaded: {
+      borderRadius: scale(10),
+      flex: 1,
+      left: scale(10),
+      top: scale(20),
+      paddingRight: scale(20),
+      paddingBottom: scale(30),
+      padding: scale(10),
+      backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    },
+    menu: {
+      padding: scale(10),
+      marginBottom: scale(5),
+      backgroundColor: appBackground,
+      borderRadius: scale(5),
+    },
+    card: {
+      backgroundColor: hexToRgb(appBackground, 0.6),
+      padding: scale(10),
+      borderRadius: scale(5),
+      margin: scale(5),
+      ...Platform.select({
+        ios: {
+          shadowColor: colors.black,
+          shadowOffset: {width: 0, height: 1},
+          shadowOpacity: 0.2,
+          shadowRadius: 4,
+        },
+        android: {
+          elevation: 4,
+        },
+      }),
+    },
+    paragraph: {
+      fontSize: scale(fonts.h5.fontSize),
+      marginBottom: scale(10),
+    },
+    bottom: {
+      bottom: 0
+    },
+  };
+
   return {
     colors,
     fonts,
@@ -177,5 +242,8 @@ export const useStyles = () => {
     buttonStyles,
     colourPickerStyle,
     walkthroughStyles,
+    homeScreenStyles,
+    uiTextStyles,
+    textColor,
   };
 };

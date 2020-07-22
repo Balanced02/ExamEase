@@ -6,9 +6,9 @@ import {useStyles} from '../assets/styles';
 import colours from '../assets/colours';
 import AppContext from '../../AppContext';
 
-function ColourPicker() {
+function ColourPicker(props) {
   const {colourPickerStyle, buttonStyles} = useStyles();
-  const {dispatch, appBackground} = useContext(AppContext);
+  const {dispatch, appBackground, isAppHome} = useContext(AppContext);
   return (
     <View style={colourPickerStyle.container}>
       <Text style={colourPickerStyle.heading}>
@@ -61,7 +61,13 @@ function ColourPicker() {
             },
           ]}></TouchableOpacity>
       </View>
-      <TouchableOpacity style={buttonStyles.button}>
+      <TouchableOpacity
+        style={buttonStyles.button}
+        onPress={() => {
+          isAppHome
+            ? props.navigation.navigate('Home')
+            : dispatch({isAppHome: true});
+        }}>
         <Text style={buttonStyles.buttonText}>Continue</Text>
       </TouchableOpacity>
     </View>
