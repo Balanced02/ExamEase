@@ -8,8 +8,8 @@ import hexToRgb from '../utils.js/helpers';
 
 const {width, height} = Dimensions.get('window');
 
-const guidelineWidth = 360;
-const guidelineBaseHeight = 640;
+const guidelineWidth = Platform.isPad ? 560 : 360;
+const guidelineBaseHeight = Platform.isPad ? 840 : 640;
 
 export const scale = (size) => (width / guidelineWidth) * size;
 export const scaleVertical = (size) => (height / guidelineBaseHeight) * size;
@@ -24,6 +24,9 @@ export const fonts = {
   boldText: {
     fontFamily: 'Montserrat-Bold',
   },
+  italicsText: {
+    fontFamily: 'Montserrat-Italic',
+  },
   semiBoldText: {
     fontFamily: 'Montserrat-SemiBold',
   },
@@ -36,7 +39,7 @@ export const fonts = {
 };
 
 export const useStyles = () => {
-  const {appTheme, appBackground, textColor} = useContext(AppContext);
+  const {appBackground, textColor} = useContext(AppContext);
   const [count, setCount] = useState(0);
   let animatedValue = new Animated.Value(0);
 
@@ -69,16 +72,38 @@ export const useStyles = () => {
   const buttonStyles = {
     button: {
       marginVertical: scale(10),
-      height: scale(45),
+      minHeight: scale(45),
+      padding: scale(5),
       borderRadius: scale(5),
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: textColor,
+      paddingHorizontal: scale(15),
+    },
+    invertedButton: {
+      backgroundColor: appBackground,
     },
     buttonText: {
       fontFamily: fonts.semiBoldText.fontFamily,
       fontSize: scale(fonts.h5.fontSize),
       color: appBackground,
+    },
+    invertedText: {
+      color: textColor,
+    },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    iconContainer: {
+      backgroundColor: hexToRgb(appBackground, 0.6),
+      borderRadius: scale(20),
+      width: scale(35),
+      height: scale(35),
+      margin: scale(10),
+      alignItems: 'center',
+      justifyContent: 'center',
     },
   };
 
@@ -193,6 +218,15 @@ export const useStyles = () => {
       backgroundColor: 'rgba(255, 255, 255, 0.3)',
       borderRadius: scale(5),
     },
+    indexContainer: {
+      padding: scale(5),
+      flexDirection: 'row',
+      alignSelf: 'flex-end',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(255, 255, 255, 0.3)',
+      borderRadius: scale(5),
+    },
     bodyShaded: {
       borderRadius: scale(10),
       flex: 1,
@@ -222,7 +256,7 @@ export const useStyles = () => {
           shadowRadius: 4,
         },
         android: {
-          elevation: 4,
+          elevation: 2,
         },
       }),
     },
@@ -231,7 +265,49 @@ export const useStyles = () => {
       marginBottom: scale(10),
     },
     bottom: {
-      bottom: 0
+      bottom: 0,
+    },
+    row: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    submit: {
+      paddingVertical: scaleVertical(5),
+      minHeight: scaleVertical(30),
+    },
+  };
+
+  const htmlStyles = {
+    p: {
+      color: textColor,
+      fontFamily: fonts.regularText.fontFamily,
+      fontSize: scale(fonts.h5.fontSize),
+    },
+    i: {
+      fontFamily: fonts.italicsText.fontFamily,
+    },
+    strong: {
+      fontFamily: fonts.boldText.fontFamily,
+      fontSize: scale(fonts.h5.fontSize),
+    },
+  };
+  const questionIndexStyle = {
+    container: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+    },
+    text: {
+      color: appBackground,
+    },
+    button: {
+      backgroundColor: hexToRgb(textColor, 0.6),
+      width: scale(40),
+      height: scale(20),
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: scale(5),
     },
   };
 
@@ -245,5 +321,7 @@ export const useStyles = () => {
     homeScreenStyles,
     uiTextStyles,
     textColor,
+    htmlStyles,
+    questionIndexStyle,
   };
 };
