@@ -13,6 +13,7 @@ export let initialState = {
   textColor: colours.black,
   alert: null,
   isAppHome: false,
+  points: 0,
 };
 
 const useController = () => {

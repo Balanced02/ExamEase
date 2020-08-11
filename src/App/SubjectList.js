@@ -80,7 +80,6 @@ const subjectList = [
 
 export default function SubjectList(props) {
   const {homeScreenStyles} = useStyles();
-  const {examType} = props.route.params;
 
   return (
     <Layout imageBackground>
@@ -101,8 +100,7 @@ export default function SubjectList(props) {
               key={subject.value}
               style={homeScreenStyles.menu}
               onPress={() => {
-                props.navigation.navigate('TakeExam', {
-                  examType,
+                props.navigation.navigate('ExamType', {
                   subject: subject.value,
                 });
               }}>

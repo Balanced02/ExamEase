@@ -4,6 +4,7 @@ const colours = {
   lilac: '#e5d3e5',
   black: '#251B1B',
   success: '#22bb33',
+  error: '#ff3c3c',
 };
 
 export default colours;

@@ -11,6 +11,7 @@ export default function UIText({style, children, type, ...props}) {
         style,
         type === 'bold' ? uiTextStyles.textBold : null,
         type === 'small' ? uiTextStyles.textSmall : null,
+        type === 'light' ? uiTextStyles.textLight : null,
       ]}
       {...props}>
       {children}

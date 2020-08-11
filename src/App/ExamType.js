@@ -45,8 +45,9 @@ export default function ExamType(props) {
             <TouchableOpacity
               key={subject.value}
               onPress={() => {
-                props.navigation.navigate('SubjectList', {
+                props.navigation.navigate('TakeExam', {
                   examType: subject.value,
+                  subject: props.route.params.subject,
                 });
               }}
               style={homeScreenStyles.menu}>

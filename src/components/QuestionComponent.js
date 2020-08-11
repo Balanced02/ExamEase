@@ -5,6 +5,7 @@ import UIText from './UIText';
 import {useStyles} from '../assets/styles';
 import Button from './Button';
 import HTMLView from 'react-native-htmlview';
+import colours from '../assets/colours';
 
 export default function QuestionComponent({
   question,
@@ -13,6 +14,8 @@ export default function QuestionComponent({
   answers,
   setAnswer = () => {},
   userAnswer,
+  correctAnswer,
+  reviewMode,
 }) {
   const {homeScreenStyles, htmlStyles} = useStyles();
   let answersArr = [];
@@ -35,8 +38,17 @@ export default function QuestionComponent({
         <Button
           key={ans.key}
           text={`${ans.value}`}
-          onPress={() => setAnswer(ans.key)}
+          onPress={() => !reviewMode && setAnswer(ans.key)}
           inverted={userAnswer === ans.key}
+          backgroundColor={
+            reviewMode
+              ? ans.key === correctAnswer
+                ? colours.success
+                : userAnswer === ans.key && userAnswer !== correctAnswer
+                ? colours.error
+                : null
+              : null
+          }
         />
       ))}
     </View>

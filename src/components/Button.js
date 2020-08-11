@@ -10,6 +10,7 @@ export default function Button({
   inverted,
   disabled,
   buttonStyle,
+  backgroundColor,
 }) {
   const {buttonStyles} = useStyles();
   return (
@@ -18,6 +19,7 @@ export default function Button({
         buttonStyles.button,
         inverted && buttonStyles.invertedButton,
         buttonStyle,
+        backgroundColor && {backgroundColor},
       ]}
       onPress={onPress}
       disabled={loading || disabled}>

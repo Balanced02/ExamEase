@@ -182,6 +182,10 @@ export const useStyles = () => {
     textSmall: {
       fontSize: scale(fonts.h5.fontSize),
     },
+    textLight: {
+      fontSize: scale(fonts.h5.fontSize),
+      fontFamily: fonts.lightText.fontFamily,
+    },
   };
 
   const homeScreenStyles = {
@@ -237,6 +241,15 @@ export const useStyles = () => {
       padding: scale(10),
       backgroundColor: 'rgba(255, 255, 255, 0.4)',
     },
+    subjectContainer: {
+      marginBottom: scale(10),
+    },
+    emptyView: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: scale(20),
+    },
     menu: {
       padding: scale(10),
       marginBottom: scale(5),
@@ -259,6 +272,11 @@ export const useStyles = () => {
           elevation: 2,
         },
       }),
+    },
+    subjectCard: {
+      alignItems: 'center',
+      maxHeight: scaleVertical(90),
+      minWidth: scale(140),
     },
     paragraph: {
       fontSize: scale(fonts.h5.fontSize),
