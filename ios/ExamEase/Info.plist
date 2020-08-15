@@ -39,8 +39,8 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
-	
-	
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-2302305146819783~4733448820</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

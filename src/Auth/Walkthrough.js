@@ -10,7 +10,7 @@ const slides = [
     key: 'availability',
     title: 'Difficulty practicing Exams?',
     text:
-      'ExamEase is here to help. Practice Questions accross WAEC, NECO, and JAMB for absolutely free',
+      'ExamEase is here to help. Practice Questions accross WASCCE, UTME and POST-UTME for absolutely free',
     image: require('../assets/images/ExamStress.png'),
     backgroundColor: colours.white,
   },

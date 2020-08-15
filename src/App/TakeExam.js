@@ -97,12 +97,13 @@ export default function TakeExam(props) {
             <BackSvg />
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={{flex: 1, justifyContent: 'center'}}>
           {examMode && (
             <View
               style={{
                 flex: 1,
                 alignItems: 'center',
+                justifyContent: 'center',
               }}>
               <UIText type="bold" style={homeScreenStyles.centerText}>
                 Taking Exam

@@ -7,6 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "postinstall": "npx pod-install",
+    "android:build": "cd android && ./gradlew assembleRelease",
+    "android:bundle": "cd android && ./gradlew bundleRelease",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -18,6 +20,7 @@
     "axios": "^0.19.2",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-admob": "^2.0.0-beta.6",
     "react-native-app-intro-slider": "^4.0.2",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-htmlview": "^0.15.0",

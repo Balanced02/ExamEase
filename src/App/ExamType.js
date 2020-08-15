@@ -6,6 +6,8 @@ import UIText from '../components/UIText';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import BackSvg from '../assets/icons/BackSvg';
 import Layout from '../components/Layout';
+import {AdMobBanner} from 'react-native-admob';
+import adsConfig from '../utils.js/adsConfig';
 
 const subjectList = [
   {
@@ -59,6 +61,12 @@ export default function ExamType(props) {
           ))}
         </ScrollView>
       </View>
+      <AdMobBanner
+        adSize="fullBanner"
+        adUnitID={adsConfig}
+        testDevices={[AdMobBanner.simulatorId]}
+        onAdFailedToLoad={(error) => console.error(error)}
+      />
     </Layout>
   );
 }

@@ -11,6 +11,9 @@ import images from '../assets/images/images';
 import Layout from '../components/Layout';
 import AppContext from '../../AppContext';
 
+import {AdMobBanner} from 'react-native-admob';
+import adsConfig from '../utils.js/adsConfig';
+
 const subjectList = [
   {
     name: 'English',
@@ -86,7 +89,7 @@ export default function Home(props) {
       <ScrollView
         // style={homeScreenStyles.container}
         contentContainerStyle={{
-          flex: 1,
+          flexGrow: 1,
         }}>
         <View style={homeScreenStyles.bodyShaded}>
           <View style={homeScreenStyles.subjectContainer}>
@@ -191,6 +194,12 @@ export default function Home(props) {
           </View>
         </View>
       </ScrollView>
+      {/* <AdMobBanner
+        adSize="fullBanner"
+        adUnitID={adsConfig}
+        testDevices={[AdMobBanner.simulatorId]}
+        onAdFailedToLoad={(error) => console.error(error)}
+      /> */}
     </Layout>
   );
 }

@@ -259,7 +259,7 @@ export const useStyles = () => {
     card: {
       backgroundColor: hexToRgb(appBackground, 0.6),
       padding: scale(10),
-      borderRadius: scale(5),
+      borderRadius: scale(10),
       margin: scale(5),
       ...Platform.select({
         ios: {
@@ -269,13 +269,13 @@ export const useStyles = () => {
           shadowRadius: 4,
         },
         android: {
-          elevation: 2,
+          // elevation: 2,
         },
       }),
     },
     subjectCard: {
       alignItems: 'center',
-      maxHeight: scaleVertical(90),
+      // maxHeight: scale(140),
       minWidth: scale(140),
     },
     paragraph: {
