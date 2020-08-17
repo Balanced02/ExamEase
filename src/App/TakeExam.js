@@ -14,6 +14,7 @@ import PreviousNextButton from '../components/PreviousNextButton';
 import QuestionIndexes from '../components/QuestionIndexes';
 import CloseSvg from '../assets/icons/CloseSvg';
 import AppContext from '../../AppContext';
+import Timer from '../components/Timer';
 
 if (
   Platform.OS === 'android' &&
@@ -108,6 +109,7 @@ export default function TakeExam(props) {
               <UIText type="bold" style={homeScreenStyles.centerText}>
                 Taking Exam
               </UIText>
+              <Timer onSubmit={submitAnswers} />
             </View>
           )}
         </View>
@@ -119,7 +121,10 @@ export default function TakeExam(props) {
       ) : null}
       {empty ? (
         <View style={homeScreenStyles.emptyView}>
-          <UIText>Cannot find Questions for this subject</UIText>
+          <UIText style={homeScreenStyles.centerText}>
+            Cannot find Questions for this subject, we're uploading more
+            questions. Please check back later
+          </UIText>
           <Button text="Go Back" onPress={() => props.navigation.goBack()} />
         </View>
       ) : (

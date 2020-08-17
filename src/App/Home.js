@@ -194,12 +194,12 @@ export default function Home(props) {
           </View>
         </View>
       </ScrollView>
-      {/* <AdMobBanner
+      <AdMobBanner
         adSize="fullBanner"
         adUnitID={adsConfig}
         testDevices={[AdMobBanner.simulatorId]}
         onAdFailedToLoad={(error) => console.error(error)}
-      /> */}
+      />
     </Layout>
   );
 }
