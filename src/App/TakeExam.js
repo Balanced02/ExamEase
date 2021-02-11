@@ -109,7 +109,7 @@ export default function TakeExam(props) {
               <UIText type="bold" style={homeScreenStyles.centerText}>
                 Taking Exam
               </UIText>
-              <Timer onSubmit={submitAnswers} />
+              {!reviewMode ? <Timer onSubmit={submitAnswers} /> : null}
             </View>
           )}
         </View>
